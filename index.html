@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="输入一个汉字，生成米字格规范笔顺动画并下载课堂视频。" />
+    <title>写字课动画工坊</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="masthead">
+        <p class="eyebrow">小学语文 · 写字教学</p>
+        <h1>写字课动画工坊</h1>
+        <p class="subtitle">输入一个汉字，生成规范笔顺演示，下载后即可插入课件。</p>
+      </header>
+
+      <section class="lesson-panel panel" aria-label="生成笔顺演示">
+        <div class="entry-block">
+          <p class="panel-kicker">备课输入</p>
+          <h2>今天要演示哪个字？</h2>
+          <div class="entry">
+            <input
+              id="characterInput"
+              class="character-input"
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              placeholder="例如：春"
+              aria-label="输入一个汉字"
+            />
+            <button id="generateButton" class="primary-button" type="button">生成演示</button>
+          </div>
+          <div class="lesson-note">
+            <strong>固定米字格</strong>
+            <span>一次生成一个汉字，适合课堂投屏与课件插入。</span>
+          </div>
+        </div>
+
+        <section class="preview-panel" aria-label="笔顺动画预览">
+          <div class="preview-meta">
+            <div>
+              <p class="panel-kicker">动画预览</p>
+              <h2 id="previewHeading">米字格书写演示</h2>
+            </div>
+            <span class="status-pill" id="statusPill" data-state="idle">等待生成</span>
+          </div>
+          <div class="practice-paper" id="previewStage" aria-live="polite">
+            <div class="paper-placeholder">
+              <span class="placeholder-char">永</span>
+              <p>输入汉字后显示规范笔顺</p>
+            </div>
+          </div>
+          <p class="stroke-summary" id="strokeSummary">请输入一个汉字，开始生成演示。</p>
+          <button id="replayButton" class="secondary-button replay-button" type="button" disabled>
+            重新播放
+          </button>
+        </section>
+      </section>
+
+      <section class="export-panel panel" aria-label="导出视频">
+        <div class="export-heading">
+          <div>
+            <p class="panel-kicker">课件素材</p>
+            <h2>导出视频</h2>
+          </div>
+          <p id="videoFormat" class="format-label">输出 WebM 视频</p>
+        </div>
+        <div class="export-controls">
+          <label class="field-label" for="sizeSelect">
+            视频尺寸
+            <select id="sizeSelect" class="select-input">
+              <option value="540">标准清晰 · 540 × 540</option>
+              <option value="720" selected>课件推荐 · 720 × 720</option>
+              <option value="1080">高清大屏 · 1080 × 1080</option>
+            </select>
+          </label>
+          <button id="videoButton" class="primary-button download-button" type="button" disabled>
+            下载视频
+          </button>
+        </div>
+        <div class="export-progress" id="exportProgress" hidden>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <p id="progressText">正在准备视频...</p>
+        </div>
+        <p class="cache-note">笔顺数据保存在本机，生成过的生字再次打开会更快。</p>
+      </section>
+
+      <footer class="page-footer">为语文课堂备课设计 · 所有视频均在浏览器中生成</footer>
+    </main>
+
+    <div class="toast" id="toast" role="alert" aria-live="assertive" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

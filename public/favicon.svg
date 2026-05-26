@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 背景圆 -->
+  <circle cx="50" cy="50" r="48" fill="#2563EB"/>
+  <!-- 汉字"写"的书写 -->
+  <g stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- 笔画1: 横 -->
+    <path d="M30 25 L70 25"/>
+    <!-- 笔画2: 竖 -->
+    <path d="M50 15 L50 45"/>
+    <!-- 笔画3: 撇 -->
+    <path d="M50 45 L30 65"/>
+    <!-- 笔画4: 竖弯钩 -->
+    <path d="M50 35 L70 55 Q75 70 65 75"/>
+  </g>
+</svg>
